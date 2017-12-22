@@ -7,7 +7,7 @@ from solve import *
 from spritesheet import Spritesheet
 from button import Button
 
-# What's up dogs?
+
 W, H = 400, 400
 G_SIZE = 20
 window = pygame.display.set_mode((W, H))
@@ -82,7 +82,6 @@ def display_board(board, window, dir):
 def draw(dir):
     display_board(board, window, dir)
     # Draw solve button
-    mouse = pygame.mouse.get_pos()
     solve_button.draw(window)
     restart_button.draw(window)
     # Refresh the window
