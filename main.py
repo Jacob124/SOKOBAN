@@ -11,7 +11,6 @@ W, H = 400, 400
 G_SIZE = 20
 window = pygame.display.set_mode((W, H))
 
-
 game = Sokoban()
 level_name = 'levels/mod1.xsb'
 board = game.new_board(level_name)
