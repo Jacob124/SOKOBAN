@@ -93,7 +93,7 @@ dirList = []
 moveIndex = 0
 clock = pygame.time.Clock()
 
-loop = True
+loop = 1
 while loop:
     clock.tick(5)
     for event in pygame.event.get():
