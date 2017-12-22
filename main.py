@@ -7,6 +7,7 @@ from solve import *
 from spritesheet import Spritesheet
 from button import Button
 
+
 W, H = 400, 400
 G_SIZE = 20
 window = pygame.display.set_mode((W, H))
