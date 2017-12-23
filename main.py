@@ -3,7 +3,7 @@ from pygame.locals import *
 from sokoban import Sokoban
 from direction import Direction
 from spot import Spot
-from solve import *
+import solve
 from spritesheet import Spritesheet
 from button import Button
 
@@ -12,7 +12,7 @@ W, H = 400, 400
 window = pygame.display.set_mode((W, H))
 
 game = Sokoban()
-level_name = 'levels/mod1.xsb'
+level_name = 'levels/mod3.xsb'
 board = game.new_board(level_name)
 G_SIZE = int(min(W, H) / max(board.width, board.height))
 sheet = Spritesheet()
@@ -102,7 +102,8 @@ while loop:
             if solve_button.mouse_on():
                 print("Solving...")
                 moveIndex = 0
-                dirList = solve_level_dfs(board).dir_list
+                # dirList = solve.dfs(board).dir_list
+                dirList = solve.bfs(board).dir_list
             if restart_button.mouse_on():
                 print("\n"*60)
                 board = game.new_board(level_name)
@@ -134,10 +135,13 @@ while loop:
                 draw(dir)
             if event.key == K_s:
                 print("Solving...")
-                dirList = solve_level_dfs(board).dir_list
+                # dirList = solve.dfs(board).dir_list
+                dirList = solve.bfs(board).dir_list
                 moveIndex = 0
 
     if len(dirList) > 0:
         dir = dirList.pop(0)
         board.move(dir)
         draw(dir)
+
+pygame.quit()
