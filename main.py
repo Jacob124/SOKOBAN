@@ -12,7 +12,7 @@ W, H = 400, 400
 window = pygame.display.set_mode((W, H))
 
 game = Sokoban()
-level_name = 'levels/mod3.xsb'
+level_name = 'levels/level.xsb'
 board = game.new_board(level_name)
 G_SIZE = int(min(W, H) / max(board.width, board.height))
 sheet = Spritesheet()

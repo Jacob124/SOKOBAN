@@ -19,6 +19,7 @@ class Board:
         self.width = 0
         self.height = 0
         self.cost = 1  # used for heuristics
+        self.is_stuck = False
 
     """ Override class functions """
     def __eq__(self, other):
@@ -65,6 +66,8 @@ class Board:
             self.boxes.add(p + direction.spot)
             # Update frozen set
             self.fboxes = frozenset(self.boxes)
+            # check if the board is stuck
+            self.is_stuck = self.check_stuck(p + direction.spot)
         self.player = p
         self.cost += 1
         self.dir_list.append(direction)
@@ -72,19 +75,19 @@ class Board:
     def is_win(self):
         return self.goals.issubset(self.boxes)
 
-    def is_stuck(self):
-        for b in self.boxes:
-            if b not in self.goals:
-                i = 0
-                for d in directions:
-                    sp = b + d.spot
-                    if sp in self.walls:
-                        if i + 1 > len(directions) - 1:
-                            i = -1
-                        nsp = b + directions[i + 1].spot
-                        if nsp in self.walls:
-                            return True
-                    i += 1
+    def check_stuck(self, b):
+
+        if b not in self.goals:
+            i = 0
+            for d in directions:
+                sp = b + d.spot
+                if sp in self.walls:
+                    if i + 1 > len(directions) - 1:
+                        i = -1
+                    nsp = b + directions[i + 1].spot
+                    if nsp in self.walls:
+                        return True
+                i += 1
         return False
 
     def getDirections(self):

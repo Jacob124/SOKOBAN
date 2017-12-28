@@ -74,7 +74,7 @@ def bfs(board):
                 end = time()
                 print_solve("BFS", child, nodes_created, nodes_repeated, len(explored), end - start)
                 return child
-            if (child not in explored) and (not child.is_stuck()):
+            if (child not in explored) and (not child.is_stuck):
                 frontier.put(child)
                 frontierSet.add(child)
                 explored.add(child)
